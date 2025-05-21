@@ -36,7 +36,7 @@ function [jointAngles,H_Actual_Mesa]= MoverRobot(coci,angulo_Gripper,defase_Robo
     %Falta mandar los datos desde aqui (Falta acomodar)
     %jointWaypoints = jointAngles*pi/180;
     %[~,~] = sendJointConfigurationAndWait(ur,UR5config,'EndTime',10);
-    [~,~] = sendJointConfigurationAndWait(ur,jointAngles,'EndTime',10);
+    [~,~] = sendJointConfigurationAndWait(ur,jointAngles,'EndTime',5);
 
     %Mandamos los datos por medio de ROS
     %trajGoal = packTrajGoal(UR5econfig,trajGoal); %Envia los datos por medio de ROS
