@@ -1,4 +1,4 @@
-function jointAngles = InverseKinematicUR5eITESMTampico2025(H_Actual,jointAngles)
+function jointAngles = InverseKinematicUR5eITESMTampico2025(H_Actual,jointAngles,bandera)
 
     % H_Actual              --->    Es la transformación homogenea requerida,
     % q                     --->    Es el vector de coordenadas articulares anterior.
@@ -21,13 +21,24 @@ function jointAngles = InverseKinematicUR5eITESMTampico2025(H_Actual,jointAngles
     %respecto a la creacion del cobot y en base a ella, si es brazo
     %estirado (acostado) trabajamos con un vector lleno de ceros, si es el
     %brazo estirado (Vertical) trabajamos con el vector K anterior
-    k = zeros(6,1);
+    
+    %k = [0 pi 0 0 0 0]'; %Esto es para cambiar el defase o movimiento que hay entre los ejes, esto es con respecto a si esta movida la mesa ron respecto
+    % a "y" o "z" (primer [z] y segundo [y] valor)
+    %k = zeros(6,1);
+
+    if bandera == 0
+        k = zeros(6,1);
+        d_6 = 0.0996 + 0.1828;
+    else
+        k = [0 0 0 -pi/8 0 0]';
+        d_6 = 0.0996;
+    end
 
     %Unidades en m   
     d_1 = 0.1625;
     d_4 = 0.1333;
     d_5 = 0.0997;
-    d_6 = 0.0996 + 0.1828;
+    %d_6 = 0.0996 + 0.1828;
 
     a_2 = -0.425;
     a_3 = -0.3922;

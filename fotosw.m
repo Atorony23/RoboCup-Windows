@@ -6,4 +6,5 @@ function img = fotosw()
     imageFileFullPathf = websave(imageFile, imageUrlf);
     img = "computern.jpg";
     imageFileFullPathn = websave(img, imageUrln);
+    img = imread(img);
 end
