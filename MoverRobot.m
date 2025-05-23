@@ -1,6 +1,6 @@
-function [jointAngles,H_Actual_Mesa]= MoverRobot(coci,angulo_Gripper,defase_Robot,jointAngles,ur,bandera)
-%%%Manda la posicion del efector, en donde lo queremos, ocupamos darle los
-% coci = coordenadas_cilindricas(r,theta,h)
+function [jointAngles,H_Actual_Mesa]= MoverRobot(coci,angulo_Gripper,defase_Robot,jointAngles,ur)
+    %%%Manda la posicion del efector, en donde lo queremos, ocupamos darle los
+    %coci = coordenadas_cilindricas(r,theta,h)
 
 
     %Punto 3d que el usuario quiere alcanzar
@@ -23,7 +23,7 @@ function [jointAngles,H_Actual_Mesa]= MoverRobot(coci,angulo_Gripper,defase_Robo
 
     %Aqui entramos con los datos de cinemtica inversa y datos anteriores
     %del posicion del cobot-----------------------------------------------
-    jointAngles = InverseKinematicUR5eITESMTampico2025(H_Actual_Robot,jointAngles,bandera);
+    jointAngles = InverseKinematicUR5eITESMTampico2025(H_Actual_Robot,jointAngles);
     
     % UR5econfig = [RobotConfiguration(3).JointPosition RobotConfiguration(2).JointPosition...
     % RobotConfiguration(1).JointPosition RobotConfiguration(4).JointPosition...
