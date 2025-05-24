@@ -2,26 +2,20 @@ function jointAngles = InverseKinematicUR5eITESMTampico2025(H_Actual,jointAngles
 
     % H_Actual              --->    Es la transformación homogenea requerida,
     % q                     --->    Es el vector de coordenadas articulares anterior.
-    % Configuracion_Entrada --->    Es el booleano que define mano hacia
-    %                               adentro o hacia afuera.
+    % Configuracion_Entrada --->    Es el booleano que define mano hacia adentro o hacia afuera.
     % R_int                 --->    Define el círculo interior de histéresis.
     % R_ext                 --->    Define el círculo exterior de histéresis.
 
-
     % Este código se probo dentro de un espacio de trabajo definido por un
-    % cilindro de
+    % cilindro de:
     % radio en intervalo [0.25,0.91] m
     % angulo en intervalo [-pi,pi] rad
     % altura en intervalo [0,0.4] m 
 
     % Offset inicial de los motores
-    %k = [-pi/2 pi/2 0 0 pi/2 0]'; Este offset declara la posicion inicial
-    %de los motores para el calculo de la tabla relacionada a sus
-    %movimientos, debemos de fijarnos en cual es la configuracion con
-    %respecto a la creacion del cobot y en base a ella, si es brazo
-    %estirado (acostado) trabajamos con un vector lleno de ceros, si es el
-    %brazo estirado (Vertical) trabajamos con el vector K anterior
-    
+    %k = [-pi/2 pi/2 0 0 pi/2 0]'; Este offset declara la posicion inicial de los motores para el calculo de la tabla relacionada a sus
+    %movimientos, debemos de fijarnos en cual es la configuracion con respecto a la creacion del cobot y en base a ella, si es brazo
+    %estirado (acostado) trabajamos con un vector lleno de ceros, si es el brazo estirado (Vertical) trabajamos con el vector K anterior    
     %k = [0 pi 0 0 0 0]'; %Esto es para cambiar el defase o movimiento que hay entre los ejes, esto es con respecto a si esta movida la mesa ron respecto
     % a "y" o "z" (primer [z] y segundo [y] valor)
     k = zeros(6,1);
@@ -120,10 +114,8 @@ function jointAngles = InverseKinematicUR5eITESMTampico2025(H_Actual,jointAngles
     condicion = max(altura_codo) - altura_codo <= 0.0001;
     theta = theta(:,condicion);
 
-    %Almacena la posicion anterior (Con la que inicia al correr mover)----
-    %---------------------------------------------------------------------
-    
-     q_Anterior = jointAngles';
+    %Almacena la posicion anterior (Con la que inicia al correr mover)
+    q_Anterior = jointAngles';
 
     %Nos quedamos con la rotación de q1 mas pequeña
     %Comparando con la posicion anterior
