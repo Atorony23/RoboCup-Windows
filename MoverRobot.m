@@ -28,7 +28,7 @@ function [jointAngles,H_Actual_Mesa]= MoverRobot(coci,angulo_Gripper,defase_Robo
     %que lo mandamos "ur", los valores que le mandamos "jointAngles", el
     %tiempo en el que queremos que finalice 'EndTime', y el valor en
     %segundos, en este caso en segundos
-    [~,~] = sendJointConfigurationAndWait(ur,jointAngles,'EndTime',5);
+    [~,~] = sendJointConfigurationAndWait(ur,jointAngles,'EndTime',2);
 
 end
 
