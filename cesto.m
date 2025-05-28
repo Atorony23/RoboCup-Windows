@@ -2,7 +2,7 @@ function cesto_debasura = cesto(objeto)
     if ismember(objeto, ["Lata", "SPAM", "Verde", "Rosa"])
         % Bote verde
         cesto_debasura = 1;
-    elseif ismember(objeto, ["Botella", "Tapa", "Plumon", "Rojo", "Azul"])
+    elseif ismember(objeto, ["Botella", "Tapa", "Plumon", "Rojo", "Azul","Amarillo"])
         % Bote azul
         cesto_debasura = 0;
     else
